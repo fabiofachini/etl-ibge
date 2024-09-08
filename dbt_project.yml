@@ -1,0 +1,14 @@
+name: 'ibge'
+version: '1.0'
+config-version: 2
+
+profile: ibge
+
+# Diretório onde os modelos (SQL) serão salvos
+model-paths: ["models"]
+
+models:
+  ibge:
+    +materialized: view  # Configuração padrão
+    marts:
+      +materialized: table  # Configuração específica para a pasta marts

@@ -1,0 +1,7 @@
+ibge:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: './ibge.duckdb'
+      extensions: []  # Use para carregar extensões adicionais se necessário

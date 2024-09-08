@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+  - name: main
+    tables:
+      - name: indice_de_gini
+      - name: inpc_ate_2019
+      - name: inpc_depois_2019
+      - name: ipca_ate_2019
+      - name: ipca_depois_2019
+      - name: limites_classe_social
+      - name: massa_salarial_habitualmente
+      - name: massa_salarial_por_classe_social
+      - name: nivel_de_desocupacao
+      - name: nivel_de_instrucao
+      - name: pib_anual
+      - name: pib_anual_pc
+      - name: pib_variacao_trimestral
+      - name: piramide_etaria
+      - name: populacao_anual
+      - name: populacao_classe_social
+      - name: populacao_economicamente_ativa
+      - name: populacao_trimestral
+      - name: rendimento_classe_social
+      - name: rendimento_mensal_atividade
+      - name: rendimento_mensal_posicao
+      - name: rendimento_todos_os_trabalhos
+      - name: rendimento_trabalho_principal
+      - name: taxa_de_analfabetismo
+      - name: taxa_de_desalentados
+      - name: taxa_de_desocupacao
+      - name: taxa_de_informalidade
+      - name: taxa_de_part_forca_de_trabalho
+      - name: taxa_de_subocupacao
