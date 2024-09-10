@@ -1,6 +1,8 @@
 import requests
 import pandas as pd
-import duckdb
+import os
+from dotenv import load_dotenv
+from sqlalchemy import create_engine
 from time import sleep
 
 # Lista de URLs, descritores e descrições
@@ -36,11 +38,19 @@ series = [
     {'url': 'https://apisidra.ibge.gov.br/values/t/7063/n1/all/v/44,68,2292/p/all/c315/7169/d/v44%202,v68%202,v2292%202', 'tabela': 'inpc_depois_2019'}
 ]
 
+# Carregar variáveis de ambiente do arquivo .env
+load_dotenv()
 
-# Conectar ao banco de dados DuckDB
-duckdb_conn = duckdb.connect('ibge.duckdb')
+server = os.getenv("DB_SERVER")
+database = os.getenv("DB_DATABASE")
+username = os.getenv("DB_USERNAME")
+password = os.getenv("DB_PASSWORD")
 
-# Loop pelas séries para fazer as requisições e salvar no banco de dados DuckDB
+# Criar a conexão com o banco de dados
+conn_str = f"mssql+pyodbc://{username}:{password}@{server}/{database}?driver=ODBC Driver 18 for SQL Server"
+engine = create_engine(conn_str)
+
+# Loop pelas séries para fazer as requisições e salvar no banco de dados
 for serie in series:
     params = {'formato': 'json'}
     sucesso = False
@@ -65,9 +75,9 @@ for serie in series:
             # Reseta o índice do DataFrame
             df = df.reset_index(drop=True)
 
-            # Inserir dados no DuckDB
-            duckdb_conn.execute(f"CREATE OR REPLACE TABLE {serie['tabela']} AS SELECT * FROM df")
-            print(f"Dados da série {serie['tabela']} salvos com sucesso no banco de dados DuckDB.")
+            # Inserir dados no banco de dados
+            df.to_sql(serie['tabela'], engine, if_exists='replace', index=False, schema='dbo')
+            print(f"Dados da série {serie['tabela']} salvos com sucesso no banco de dados.")
                 
             sucesso = True
 
@@ -79,5 +89,5 @@ for serie in series:
     if not sucesso:
         print(f"Falha ao obter dados da série {serie['tabela']} após {max_tentativas} tentativas.")
         
-duckdb_conn.close()
+    
 print("Fim das importações de dados do IBGE.")
