@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__populacao_anual.sql
 
 with populacao_anual as (
-    select * from {{ source('main', 'populacao_anual') }}
+    select * from {{ source('dbo', 'populacao_anual') }}
 ),
 
 -- transformação dos dados

@@ -9,6 +9,6 @@ model-paths: ["models"]
 
 models:
   ibge:
-    +materialized: view  # Configuração padrão
+    +materialized: view 
     marts:
-      +materialized: table  # Configuração específica para a pasta marts
+      +materialized: view  

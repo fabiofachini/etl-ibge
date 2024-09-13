@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__indice_de_gini.sql
 
 with indice_de_gini as (
-    select * from {{ source('main', 'indice_de_gini') }}
+    select * from {{ source('dbo', 'indice_de_gini') }}
 ),
 
 -- transformação dos dados

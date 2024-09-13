@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__limites_classe_social.sql
 
 with limites_classe_social as (
-    select * from {{ source('main', 'limites_classe_social') }}
+    select * from {{ source('dbo', 'limites_classe_social') }}
 ),
 
 -- transformação dos dados

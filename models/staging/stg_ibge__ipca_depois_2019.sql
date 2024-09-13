@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__ipca_depois_2019.sql
 
 with ipca_depois_2019 as (
-    select * from {{ source('main', 'ipca_depois_2019') }}
+    select * from {{ source('dbo', 'ipca_depois_2019') }}
 ),
 
 -- transformação dos dados

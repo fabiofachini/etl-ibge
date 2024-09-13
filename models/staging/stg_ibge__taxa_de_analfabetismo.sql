@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__taxa_de_analfabetismo.sql
 
 with taxa_de_analfabetismo as (
-    select * from {{ source('main', 'taxa_de_analfabetismo') }}
+    select * from {{ source('dbo', 'taxa_de_analfabetismo') }}
 ),
 
 -- transformação dos dados

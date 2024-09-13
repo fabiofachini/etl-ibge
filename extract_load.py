@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from time import sleep
+import urllib
 
 # Lista de URLs, descritores e descrições
 series = [
@@ -38,6 +39,7 @@ series = [
     {'url': 'https://apisidra.ibge.gov.br/values/t/7063/n1/all/v/44,68,2292/p/all/c315/7169/d/v44%202,v68%202,v2292%202', 'tabela': 'inpc_depois_2019'}
 ]
 
+
 # Carregar variáveis de ambiente do arquivo .env
 load_dotenv()
 
@@ -47,7 +49,8 @@ username = os.getenv("DB_USERNAME")
 password = os.getenv("DB_PASSWORD")
 
 # Criar a conexão com o banco de dados
-conn_str = f"mssql+pyodbc://{username}:{password}@{server}/{database}?driver=ODBC Driver 18 for SQL Server"
+params = urllib.parse.quote_plus(f"DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={server};DATABASE={database};UID={username};PWD={password}")
+conn_str = f"mssql+pyodbc:///?odbc_connect={params}"
 engine = create_engine(conn_str)
 
 # Loop pelas séries para fazer as requisições e salvar no banco de dados

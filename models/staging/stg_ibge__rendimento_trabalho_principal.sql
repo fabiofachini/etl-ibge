@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__rendimento_trabalho_principal.sql
 
 with rendimento_trabalho_principal as (
-    select * from {{ source('main', 'rendimento_trabalho_principal') }}
+    select * from {{ source('dbo', 'rendimento_trabalho_principal') }}
 ),
 
 -- transformação dos dados

@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: main
+  - name: dbo
     tables:
       - name: indice_de_gini
       - name: inpc_ate_2019

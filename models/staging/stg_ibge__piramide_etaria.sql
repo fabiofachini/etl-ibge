@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__piramide_etaria.sql
 
 with piramide_etaria as (
-    select * from {{ source('main', 'piramide_etaria') }}
+    select * from {{ source('dbo', 'piramide_etaria') }}
 ),
 
 -- transformação dos dados

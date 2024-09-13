@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__pib_variacao_trimestral.sql
 
 with pib_variacao_trimestral as (
-    select * from {{ source('main', 'pib_variacao_trimestral') }}
+    select * from {{ source('dbo', 'pib_variacao_trimestral') }}
 ),
 
 -- transformação dos dados

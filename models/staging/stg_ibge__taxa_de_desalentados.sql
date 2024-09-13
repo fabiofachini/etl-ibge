@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__taxa_de_desalentados.sql
 
 with taxa_de_desalentados as (
-    select * from {{ source('main', 'taxa_de_desalentados') }}
+    select * from {{ source('dbo', 'taxa_de_desalentados') }}
 ),
 
 -- transformação dos dados

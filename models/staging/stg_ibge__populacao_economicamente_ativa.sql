@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__populacao_economicamente_ativa.sql
 
 with populacao_economicamente_ativa as (
-    select * from {{ source('main', 'populacao_economicamente_ativa') }}
+    select * from {{ source('dbo', 'populacao_economicamente_ativa') }}
 ),
 
 -- transformação dos dados

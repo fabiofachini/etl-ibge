@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__rendimento_mensal_atividade.sql
 
 with rendimento_mensal_atividade as (
-    select * from {{ source('main', 'rendimento_mensal_atividade') }}
+    select * from {{ source('dbo', 'rendimento_mensal_atividade') }}
 ),
 
 -- transformação dos dados

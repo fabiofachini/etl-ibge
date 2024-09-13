@@ -1,4 +1,4 @@
-dados-economicos:
+ibge:
   target: dev
   outputs:
     dev:

@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__massa_salarial_habitualmente.sql
 
 with massa_salarial_habitualmente as (
-    select * from {{ source('main', 'massa_salarial_habitualmente') }}
+    select * from {{ source('dbo', 'massa_salarial_habitualmente') }}
 ),
 
 -- transformação dos dados

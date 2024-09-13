@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__rendimento_todos_os_trabalhos.sql
 
 with rendimento_todos_os_trabalhos as (
-    select * from {{ source('main', 'rendimento_todos_os_trabalhos') }}
+    select * from {{ source('dbo', 'rendimento_todos_os_trabalhos') }}
 ),
 
 -- transformação dos dados

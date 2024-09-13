@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__taxa_de_informalidade.sql
 
 with taxa_de_informalidade as (
-    select * from {{ source('main', 'taxa_de_informalidade') }}
+    select * from {{ source('dbo', 'taxa_de_informalidade') }}
 ),
 
 -- transformação dos dados

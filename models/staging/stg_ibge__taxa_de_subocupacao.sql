@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__taxa_de_subocupacao.sql
 
 with taxa_de_subocupacao as (
-    select * from {{ source('main', 'taxa_de_subocupacao') }}
+    select * from {{ source('dbo', 'taxa_de_subocupacao') }}
 ),
 
 -- transformação dos dados

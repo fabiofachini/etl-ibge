@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__pib_anual.sql
 
 with pib_anual_pc as (
-    select * from {{ source('main', 'pib_anual_pc') }}
+    select * from {{ source('dbo', 'pib_anual_pc') }}
 ),
 
 -- transformação dos dados

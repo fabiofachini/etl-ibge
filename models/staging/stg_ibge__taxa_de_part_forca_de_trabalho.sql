@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__taxa_de_part_forca_de_trabalho.sql
 
 with taxa_de_part_forca_de_trabalho as (
-    select * from {{ source('main', 'taxa_de_part_forca_de_trabalho') }}
+    select * from {{ source('dbo', 'taxa_de_part_forca_de_trabalho') }}
 ),
 
 -- transformação dos dados
