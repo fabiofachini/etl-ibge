@@ -1,10 +1,8 @@
-with int_classe_social_massa as (
-    select * from {{ ref('stg_ibge__massa_salarial_por_classe_social') }}
-),
 
-massa_classe_social as (
-    SELECT 
+with int_classe_social_massa as (
+    select 
         Data,
+        'Massa Salarial' AS Fonte,
         SUM(CASE WHEN Classes_Sociais_Percentil = 'Até o P5' THEN Massa_Salarial_por_Classe_Social ELSE 0 END) AS [Até o P5],
         SUM(CASE WHEN Classes_Sociais_Percentil = 'Maior que o P5 até o P10' THEN Massa_Salarial_por_Classe_Social ELSE 0 END) AS [P5 até o P10],
         SUM(CASE WHEN Classes_Sociais_Percentil = 'Maior que o P10 até o P20' THEN Massa_Salarial_por_Classe_Social ELSE 0 END) AS [P10 até o P20],
@@ -18,8 +16,7 @@ massa_classe_social as (
         SUM(CASE WHEN Classes_Sociais_Percentil = 'Maior que o P90 até o P95' THEN Massa_Salarial_por_Classe_Social ELSE 0 END) AS [P90 até o P95],
         SUM(CASE WHEN Classes_Sociais_Percentil = 'Maior que o P95 até o P99' THEN Massa_Salarial_por_Classe_Social ELSE 0 END) AS [P95 até o P99],
         SUM(CASE WHEN Classes_Sociais_Percentil = 'Maior que o P99' THEN Massa_Salarial_por_Classe_Social ELSE 0 END) AS [Maior que o P99]
-    FROM int_classe_social_massa
+    FROM {{ ref('stg_ibge__massa_salarial_por_classe_social') }}
     GROUP BY Data
 )
-
-select * from massa_classe_social
+select * from int_classe_social_massa;

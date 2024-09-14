@@ -1,10 +1,7 @@
 with int_classe_social_pop as (
-    select * from {{ ref('stg_ibge__populacao_classe_social') }}
-),
-
-pop_classe_social as (
-    SELECT 
+    select 
         Data,
+        'População' AS Fonte,
         SUM(CASE WHEN Classes_Sociais_Percentil = 'Até o P5' THEN Populacao_Classe_Social ELSE 0 END) AS [Até o P5],
         SUM(CASE WHEN Classes_Sociais_Percentil = 'Maior que o P5 até o P10' THEN Populacao_Classe_Social ELSE 0 END) AS [P5 até o P10],
         SUM(CASE WHEN Classes_Sociais_Percentil = 'Maior que o P10 até o P20' THEN Populacao_Classe_Social ELSE 0 END) AS [P10 até o P20],
@@ -18,8 +15,7 @@ pop_classe_social as (
         SUM(CASE WHEN Classes_Sociais_Percentil = 'Maior que o P90 até o P95' THEN Populacao_Classe_Social ELSE 0 END) AS [P90 até o P95],
         SUM(CASE WHEN Classes_Sociais_Percentil = 'Maior que o P95 até o P99' THEN Populacao_Classe_Social ELSE 0 END) AS [P95 até o P99],
         SUM(CASE WHEN Classes_Sociais_Percentil = 'Maior que o P99' THEN Populacao_Classe_Social ELSE 0 END) AS [Maior que o P99]
-    FROM int_classe_social_pop
+    FROM {{ ref('stg_ibge__populacao_classe_social') }}
     GROUP BY Data
 )
-
-select * from pop_classe_social
+select * from int_classe_social_pop;

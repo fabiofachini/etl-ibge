@@ -13,7 +13,7 @@ rendimento_posicao as (
         SUM(CASE WHEN Posicao_Trabalho = 'Empregado' THEN Rendimento_Mensal_Posicao ELSE 0 END) AS 'Empregado',
         SUM(CASE WHEN Posicao_Trabalho = 'Empregado no setor público' THEN Rendimento_Mensal_Posicao ELSE 0 END) AS 'Empregado no setor público',
         SUM(CASE WHEN Posicao_Trabalho = 'Empregador' THEN Rendimento_Mensal_Posicao ELSE 0 END) AS 'Empregador',
-        SUM(CASE WHEN Posicao_Trabalho = 'Total' THEN Rendimento_Mensal_Posicao ELSE 0 END) AS 'Total'
+        SUM(CASE WHEN Posicao_Trabalho = 'Total' THEN Rendimento_Mensal_Posicao ELSE 0 END) AS 'Total Posição'
     FROM stg_ibge__rendimento_mensal_posicao
     GROUP BY Data
 )

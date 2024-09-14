@@ -19,7 +19,7 @@ rendimento_atividade as (
         SUM(CASE WHEN Trabalho_Principal = 'Administração pública, defesa, seguridade social, educação, saúde humana e serviços sociais' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Administração Pública, Saúde, Educação',
         SUM(CASE WHEN Trabalho_Principal = 'Outros serviços' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Outros Serviços',
         SUM(CASE WHEN Trabalho_Principal = 'Serviços domésticos' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Serviços Domésticos',
-        SUM(CASE WHEN Trabalho_Principal = 'Total' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Total'
+        SUM(CASE WHEN Trabalho_Principal = 'Total' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Total Atividade'
     FROM stg_ibge__rendimento_mensal_atividade
     GROUP BY Data
 )
