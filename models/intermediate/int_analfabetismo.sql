@@ -7,39 +7,39 @@ with stg_ibge__taxa_de_analfabetismo as (
 -- transformação dos dados
 stg_ibge__taxa_de_analfabetismo_m as (
     select 
-        Data,
-        Taxa_de_Analfabetismo as Taxa_de_Analfabetismo_Mulheres
+        data,
+        taxa_de_analfabetismo as taxa_de_analfabetismo_mulheres
     from stg_ibge__taxa_de_analfabetismo
-    where Sexo = 'Mulheres'
+    where sexo = 'mulheres'
 ),
 
 stg_ibge__taxa_de_analfabetismo_h as (
     select 
-        Data,
-        Taxa_de_Analfabetismo as Taxa_de_Analfabetismo_Homens
+        data,
+        taxa_de_analfabetismo as taxa_de_analfabetismo_homens
     from stg_ibge__taxa_de_analfabetismo
-    where Sexo = 'Homens'
+    where sexo = 'homens'
 ),
 
 stg_ibge__taxa_de_analfabetismo_t as (
     select 
-        Data,
-        Taxa_de_Analfabetismo as Taxa_de_Analfabetismo_Total
+        data,
+        taxa_de_analfabetismo as taxa_de_analfabetismo_total
     from stg_ibge__taxa_de_analfabetismo
-    where Sexo = 'Total'
+    where sexo = 'total'
 ),
 
 int_analfabetismo_joined as (
     select 
-        m.Data as Data,
-        m.Taxa_de_Analfabetismo_Mulheres,
-        h.Taxa_de_Analfabetismo_Homens,
-        t.Taxa_de_Analfabetismo_Total
+        m.data as data,
+        m.taxa_de_analfabetismo_mulheres,
+        h.taxa_de_analfabetismo_homens,
+        t.taxa_de_analfabetismo_total
         
     from stg_ibge__taxa_de_analfabetismo_m m
 
-    left join stg_ibge__taxa_de_analfabetismo_h h on m.Data = h.Data
-    left join stg_ibge__taxa_de_analfabetismo_t t on m.Data = t.Data
+    left join stg_ibge__taxa_de_analfabetismo_h h on m.data = h.data
+    left join stg_ibge__taxa_de_analfabetismo_t t on m.data = t.data
 )
 
 -- retorno dos dados

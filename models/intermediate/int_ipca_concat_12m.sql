@@ -17,7 +17,7 @@ stg_ibge__ipca_concat as (
 
 int_ipca_concat_12m as (
     select * from stg_ibge__ipca_concat
-    where Variável = 'IPCA - Variação acumulada em 12 meses'
+    where variavel = 'IPCA - Variação acumulada em 12 meses'
 )
 
 -- retorno dos dados

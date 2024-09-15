@@ -11,20 +11,20 @@ int_instrucao as (
 -- Transformação dos dados
 educacao as (
     select 
-        a.Data as Data,
-        a.Taxa_de_Analfabetismo_Mulheres,
-        a.Taxa_de_Analfabetismo_Homens,
-        a.Taxa_de_Analfabetismo_Total,
+        a.data as data,
+        a.taxa_de_analfabetismo_mulheres,
+        a.taxa_de_analfabetismo_homens,
+        a.taxa_de_analfabetismo_total,
         b.sem_instrucao,
-        b.Fundamental,
-        b.Médio,
-        b.Superior
+        b.fundamental,
+        b.medio,
+        b.superior
 
 
 
     from int_analfabetismo a
 
-    left join int_instrucao b on a.Data = b.Data
+    left join int_instrucao b on a.data = b.data
 
 )
 

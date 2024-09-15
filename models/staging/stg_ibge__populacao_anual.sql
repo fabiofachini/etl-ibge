@@ -8,12 +8,12 @@ with populacao_anual as (
 stg_ibge__populacao_anual as (
     select
         CONVERT(DATE, 
-            [Ano (Código)] + '-01-01') AS Data,
+            [Ano (Código)] + '-01-01') AS data,
         TRY_CAST(
         CASE 
             WHEN [Valor] = '...' THEN NULL
             ELSE [Valor]
-        END AS INT) AS Populacao_Anual
+        END AS INT) AS populacao_anual
     from populacao_anual
 )
 

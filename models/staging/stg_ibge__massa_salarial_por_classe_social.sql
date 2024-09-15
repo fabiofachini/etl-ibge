@@ -8,14 +8,14 @@ with massa_salarial_por_classe_social as (
 stg_ibge__massa_salarial_por_classe_social as (
     select
         CONVERT(DATE, 
-            [Ano (Código)] + '-01-01') AS Data,
+            [Ano (Código)] + '-01-01') AS data,
         TRY_CAST(
         CASE 
             WHEN [Valor] = '...' THEN NULL
             ELSE [Valor]
         END AS NUMERIC(10,4)
-    ) AS Massa_Salarial_por_Classe_Social,
-        [Classes de percentual das pessoas em ordem crescente de rendimento domiciliar per capita] AS Classes_Sociais_Percentil
+    ) AS massa_salarial_por_classe_social,
+        [Classes de percentual das pessoas em ordem crescente de rendimento domiciliar per capita] AS classes_sociais_percentil
     from massa_salarial_por_classe_social
 )  
 -- retorno dos dados transformados

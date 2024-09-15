@@ -8,14 +8,14 @@ with nivel_de_instrucao as (
 stg_ibge__nivel_de_instrucao as (
     select
         CONVERT(DATE, 
-            [Ano (Código)] + '-01-01') AS Data,
+            [Ano (Código)] + '-01-01') AS data,
         TRY_CAST(
         CASE 
             WHEN [Valor] = '...' THEN NULL
             ELSE [Valor]
-        END AS INT) AS Mil_Pessoas,
-        Sexo,
-        [Nível de instrução] AS Nivel_de_Instrucao
+        END AS INT) AS mil_pessoas,
+        sexo,
+        [Nível de instrução] AS nivel_de_instrucao
     from nivel_de_instrucao
 )
 

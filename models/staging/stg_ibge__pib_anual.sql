@@ -8,12 +8,12 @@ with pib_anual as (
 stg_ibge__pib_anual as (
     select
         CONVERT(DATE, 
-            [Ano (Código)] + '-01-01') AS Data,
+            [Ano (Código)] + '-01-01') AS data,
         TRY_CAST(
         CASE 
             WHEN [Valor] = '...' THEN NULL
             ELSE [Valor]
-        END AS NUMERIC(10,2)) AS PIB_Anual
+        END AS NUMERIC(10,2)) AS pib_anual
 
     from pib_anual
 )

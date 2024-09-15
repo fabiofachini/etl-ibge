@@ -8,13 +8,13 @@ with rendimento_classe_social as (
 stg_ibge__rendimento_classe_social as (
     select
         CONVERT(DATE, 
-            [Ano (Código)] + '-01-01') AS Data,
+            [Ano (Código)] + '-01-01') AS data,
         TRY_CAST(
         CASE 
             WHEN [Valor] = '...' THEN NULL
             ELSE [Valor]
-        END AS INT) AS Rendimento_Classe_Social,
-        [Classes de percentual das pessoas em ordem crescente de rendimento domiciliar per capita] AS Classes_Sociais_Percentil
+        END AS INT) AS rendimento_classe_social,
+        [Classes de percentual das pessoas em ordem crescente de rendimento domiciliar per capita] AS classes_sociais_percentil
     from rendimento_classe_social
 )
 

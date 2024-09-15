@@ -9,14 +9,14 @@ stg_ibge__ipca_ate_2019 as (
     select
         CONVERT(DATE, 
             SUBSTRING(CAST([Mês (Código)] AS VARCHAR(6)), 1, 4) + '-' + 
-            SUBSTRING(CAST([Mês (Código)] AS VARCHAR(6)), 5, 2) + '-01') AS Data,
+            SUBSTRING(CAST([Mês (Código)] AS VARCHAR(6)), 5, 2) + '-01') AS data,
         TRY_CAST(
         CASE 
             WHEN [Valor] = '...' THEN NULL
             ELSE [Valor]
         END AS NUMERIC(10,2)
-    ) AS IPCA_ate_2019,
-    Variável
+    ) AS ipca_ate_2019,
+    Variável AS variavel
     from ipca_ate_2019
 )
 

@@ -9,13 +9,13 @@ stg_ibge__nivel_de_desocupacao as (
     select
         CONVERT(DATE, 
             SUBSTRING(CAST([Trimestre Móvel (Código)] AS VARCHAR(6)), 1, 4) + '-' + 
-            SUBSTRING(CAST([Trimestre Móvel (Código)] AS VARCHAR(6)), 5, 2) + '-01') AS Data,
+            SUBSTRING(CAST([Trimestre Móvel (Código)] AS VARCHAR(6)), 5, 2) + '-01') AS data,
         TRY_CAST(
         CASE 
             WHEN [Valor] = '...' THEN NULL
             ELSE [Valor]
         END AS NUMERIC(10,1)
-    ) AS Nivel_de_Desocupacao
+    ) AS nivel_de_desocupacao
     from nivel_de_desocupacao
 )
 

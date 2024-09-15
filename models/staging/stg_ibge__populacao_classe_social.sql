@@ -13,8 +13,8 @@ stg_ibge__populacao_classe_social as (
         CASE 
             WHEN [Valor] = '...' THEN NULL
             ELSE [Valor]
-        END AS NUMERIC(10,1)) AS Populacao_Classe_Social,
-        [Classes de percentual das pessoas em ordem crescente de rendimento domiciliar per capita] AS Classes_Sociais_Percentil
+        END AS NUMERIC(10,1)) AS populacao_classe_social,
+        [Classes de percentual das pessoas em ordem crescente de rendimento domiciliar per capita] AS classes_sociais_percentil
     from populacao_classe_social
 )
 

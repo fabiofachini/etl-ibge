@@ -7,14 +7,14 @@ with stg_ibge__nivel_de_instrucao as (
 -- transformação dos dados
 instrucao as (
     SELECT 
-        Data,
-        SUM(CASE WHEN Nivel_de_Instrucao = 'Sem instrução e fundamental incompleto ou equivalente' THEN Mil_Pessoas ELSE 0 END) AS 'sem_instrucao',
-        SUM(CASE WHEN Nivel_de_Instrucao = 'Fundamental completo e médio incompleto ou equivalente' THEN Mil_Pessoas ELSE 0 END) AS 'Fundamental',
-        SUM(CASE WHEN Nivel_de_Instrucao = 'Médio completo ou equivalente e superior incompleto' THEN Mil_Pessoas ELSE 0 END) AS 'Médio',
-        SUM(CASE WHEN Nivel_de_Instrucao = 'Superior completo' THEN Mil_Pessoas ELSE 0 END) AS 'Superior'
+        data,
+        SUM(CASE WHEN nivel_de_instrucao = 'Sem instrução e fundamental incompleto ou equivalente' THEN mil_pessoas ELSE 0 END) AS 'sem_instrucao',
+        SUM(CASE WHEN nivel_de_instrucao = 'Fundamental completo e médio incompleto ou equivalente' THEN mil_pessoas ELSE 0 END) AS 'fundamental',
+        SUM(CASE WHEN nivel_de_instrucao = 'Médio completo ou equivalente e superior incompleto' THEN mil_pessoas ELSE 0 END) AS 'medio',
+        SUM(CASE WHEN nivel_de_instrucao = 'Superior completo' THEN mil_pessoas ELSE 0 END) AS 'superior'
     FROM stg_ibge__nivel_de_instrucao 
     WHERE Sexo = 'Total'
-    GROUP BY Data
+    GROUP BY data
 )
 
 -- retorno dos dados

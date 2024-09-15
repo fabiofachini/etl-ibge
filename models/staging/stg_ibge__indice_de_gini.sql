@@ -8,13 +8,13 @@ with indice_de_gini as (
 stg_ibge__indice_de_gini as (
     select
         CONVERT(DATE, 
-            [Ano (Código)] + '-01-01') AS Data,
+            [Ano (Código)] + '-01-01') AS data,
         TRY_CAST(
         CASE 
             WHEN [Valor] = '...' THEN NULL
             ELSE [Valor]
         END AS NUMERIC(10,4)
-    ) AS Indice_de_Gini
+    ) AS indice_gini
     from indice_de_gini
 )
 

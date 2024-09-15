@@ -17,7 +17,7 @@ stg_ibge__inpc_concat as (
 
 int_inpc_concat_12m as (
     select * from stg_ibge__inpc_concat
-    where Variável = 'INPC - Variação acumulada em 12 meses'
+    where variavel = 'INPC - Variação acumulada em 12 meses'
 )
 
 -- retorno dos dados

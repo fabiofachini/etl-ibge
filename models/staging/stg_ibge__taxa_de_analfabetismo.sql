@@ -8,13 +8,13 @@ with taxa_de_analfabetismo as (
 stg_ibge__taxa_de_analfabetismo as (
     select
         CONVERT(DATE, 
-            [Ano (Código)] + '-01-01') AS Data,
+            [Ano (Código)] + '-01-01') AS data,
         TRY_CAST(
         CASE 
             WHEN [Valor] = '...' THEN NULL
             ELSE [Valor]
-        END AS NUMERIC(10,1)) AS Taxa_de_Analfabetismo,
-        Sexo
+        END AS NUMERIC(10,1)) AS taxa_de_analfabetismo,
+        sexo
     from taxa_de_analfabetismo
 )
 

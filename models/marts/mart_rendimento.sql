@@ -23,31 +23,31 @@ stg_ibge__massa_salarial_habitualmente as (
 -- CTE para combinar todas as tabelas
 rendimento as (
     select 
-        a.Data,
-        a.Agricultura,
-        a.Indústria,
-        a.Construção,
-        a.Comércio,
-        a.Transporte,
-        a.Alojamento,
-        a.[Informação, Comunic., Financ., Adm.],
-        a.[Administração Pública, Saúde, Educação],
-        a.[Outros Serviços],
-        a.[Serviços Domésticos],
-        a.[Total Atividade],
-        p.[Conta própria],
-        p.Empregado,
-        p.[Empregado no setor público],
-        p.Empregador,
-        p.[Total Posição],
-        b.Rendimento_Trabalho_Principal,
-        c.Rendimento_Todos_os_Trabalhos,
-        d.Massa_Salarial_Habitualmente
+        a.data,
+        a.agricultura,
+        a.industria,
+        a.construcao,
+        a.comercio,
+        a.transporte,
+        a.alojamento,
+        a.[informacao,_comunic.,_financ.,_adm.],
+        a.[administracao_publica,_saude,_educacao],
+        a.[outros_servicos],
+        a.[servicos_domesticos],
+        a.[total_atividade],
+        p.[conta_propria],
+        p.empregado,
+        p.[empregado_no_setor_publico],
+        p.empregador,
+        p.[total_posicao],
+        b.rendimento_trabalho_principal,
+        c.rendimento_todos_os_trabalhos,
+        d.massa_salarial_habitualmente
     from int_rendimento_atividade a
-    join int_rendimento_posicao p on a.Data = p.Data
-    join stg_ibge__rendimento_trabalho_principal b on a.Data = b.Data
-    join stg_ibge__rendimento_todos_os_trabalhos c on a.Data = c.Data
-    join stg_ibge__massa_salarial_habitualmente d on a.Data = d.Data
+    join int_rendimento_posicao p on a.data = p.data
+    join stg_ibge__rendimento_trabalho_principal b on a.data = b.data
+    join stg_ibge__rendimento_todos_os_trabalhos c on a.data = c.data
+    join stg_ibge__massa_salarial_habitualmente d on a.data = d.data
 )
 
 -- Retorno dos dados combinados

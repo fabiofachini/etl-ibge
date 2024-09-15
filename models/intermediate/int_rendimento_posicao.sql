@@ -8,14 +8,14 @@ with stg_ibge__rendimento_mensal_posicao as (
 
 rendimento_posicao as (
     SELECT 
-        Data,
-        SUM(CASE WHEN Posicao_Trabalho = 'Conta própria' THEN Rendimento_Mensal_Posicao ELSE 0 END) AS 'Conta própria',
-        SUM(CASE WHEN Posicao_Trabalho = 'Empregado' THEN Rendimento_Mensal_Posicao ELSE 0 END) AS 'Empregado',
-        SUM(CASE WHEN Posicao_Trabalho = 'Empregado no setor público' THEN Rendimento_Mensal_Posicao ELSE 0 END) AS 'Empregado no setor público',
-        SUM(CASE WHEN Posicao_Trabalho = 'Empregador' THEN Rendimento_Mensal_Posicao ELSE 0 END) AS 'Empregador',
-        SUM(CASE WHEN Posicao_Trabalho = 'Total' THEN Rendimento_Mensal_Posicao ELSE 0 END) AS 'Total Posição'
+        data,
+        SUM(CASE WHEN posicao_trabalho = 'Conta própria' THEN rendimento_mensal_posicao ELSE 0 END) AS 'conta_propria',
+        SUM(CASE WHEN posicao_trabalho = 'Empregado' THEN rendimento_mensal_posicao ELSE 0 END) AS 'empregado',
+        SUM(CASE WHEN posicao_trabalho = 'Empregado no setor público' THEN rendimento_mensal_posicao ELSE 0 END) AS 'empregado_no_setor_publico',
+        SUM(CASE WHEN posicao_trabalho = 'Empregador' THEN rendimento_mensal_posicao ELSE 0 END) AS 'empregador',
+        SUM(CASE WHEN posicao_trabalho = 'Total' THEN rendimento_mensal_posicao ELSE 0 END) AS 'total_posicao'
     FROM stg_ibge__rendimento_mensal_posicao
-    GROUP BY Data
+    GROUP BY data
 )
 
 

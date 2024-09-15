@@ -26,16 +26,16 @@ unified_dates as (
 -- Junção das tabelas usando as datas unificadas
 trabalho_joined as (
     select 
-        u.Data as Data,
-        v.PIB_Variacao_Trimestral,
-        a.PIB_Anual as PIB_Anual_PC,
-        b.PIB_Anual as PIB_Anual,
-        c.Populacao_Anual as Populacao_Anual
+        u.data as data,
+        v.pib_variacao_trimestral,
+        a.pib_anual as pib_anual_pc,
+        b.pib_anual as pib_anual,
+        c.populacao_anual as populacao_anual
     from unified_dates u
-    left join stg_pib_variacao_trimestral v on u.Data = v.Data
-    left join stg_pib_anual_pc a on u.Data = a.Data
-    left join stg_pib_anual b on u.Data = b.Data
-    left join stg_ibge__populacao_anual c on u.Data = c.Data
+    left join stg_pib_variacao_trimestral v on u.data = v.data
+    left join stg_pib_anual_pc a on u.data = a.data
+    left join stg_pib_anual b on u.data = b.data
+    left join stg_ibge__populacao_anual c on u.data = c.data
 )
 
 -- Retorno dos dados

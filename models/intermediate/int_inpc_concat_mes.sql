@@ -17,7 +17,7 @@ stg_ibge__inpc_concat as (
 
 int_inpc_concat_mes as (
     select * from stg_ibge__inpc_concat
-    where Variável = 'INPC - Variação mensal'
+    where variavel = 'INPC - Variação mensal'
 )
 
 -- retorno dos dados

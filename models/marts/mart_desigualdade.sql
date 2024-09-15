@@ -29,7 +29,7 @@ combined_data as (
 combined_data_with_gini as (
     select 
         c.*,
-        i.Indice_de_Gini
+        i.indice_gini
     from combined_data c
     left join stg_ibge__indice_de_gini i
     on c.Data = i.Data

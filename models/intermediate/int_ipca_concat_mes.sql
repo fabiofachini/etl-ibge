@@ -17,7 +17,7 @@ stg_ibge__ipca_concat as (
 
 int_ipca_concat_mes as (
     select * from stg_ibge__ipca_concat
-    where Variável = 'IPCA - Variação mensal'
+    where variavel = 'IPCA - Variação mensal'
 )
 
 -- retorno dos dados

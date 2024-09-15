@@ -1,26 +1,26 @@
 with stg_ibge__populacao_economicamente_ativa_f as (
     select * from {{ ref('stg_ibge__populacao_economicamente_ativa') }}
-    where Condição_Forca_Trabalho = 'Força de Trabalho'
+    where condição_forca_trabalho = 'forca de trabalho'
 ),
 
 stg_ibge__populacao_economicamente_ativa_fto as (
     select * from {{ ref('stg_ibge__populacao_economicamente_ativa') }}
-    where Condição_Forca_Trabalho = 'Força de Trabalho - ocupada'
+    where condição_forca_trabalho = 'forca de trabalho - ocupada'
 ),
 
 stg_ibge__populacao_economicamente_ativa_ftd as (
     select * from {{ ref('stg_ibge__populacao_economicamente_ativa') }}
-    where Condição_Forca_Trabalho = 'Força de Trabalho - desocupada'
+    where condição_forca_trabalho = 'forca de trabalho - desocupada'
 ),
 
 stg_ibge__populacao_economicamente_ativa_fo as (
     select * from {{ ref('stg_ibge__populacao_economicamente_ativa') }}
-    where Condição_Forca_Trabalho = 'Fora da força de trabalho'
+    where condição_forca_trabalho = 'fora da forca de trabalho'
 ),
 
 stg_ibge__populacao_economicamente_ativa_t as (
     select * from {{ ref('stg_ibge__populacao_economicamente_ativa') }}
-    where Condição_Forca_Trabalho = 'Total'
+    where condição_forca_trabalho = 'total'
 ),
 
 stg_ibge__populacao_mensal as (
@@ -54,34 +54,34 @@ stg_ibge__taxa_de_subocupacao as (
 -- transformação dos dados
 int_populacao_trabalho_joined as (
     select 
-        f.Data as Data,
-        f.Populacao_Economicamente_Ativa as Forca_Trabalho,
-        fto.Populacao_Economicamente_Ativa as Forca_Trabalho_Ocupada,
-        ftd.Populacao_Economicamente_Ativa as Forca_Trabalho_Desocupada,
-        fo.Populacao_Economicamente_Ativa as Fora_Forca_Trabalho,
-        t.Populacao_Economicamente_Ativa as Forca_Trabalho_Total,
-        pp.Populacao as População_Total,
-        d.Taxa_de_Desalentados,
-        de.Taxa_de_Desocupacao,
-        des.Nivel_de_Desocupacao,
-        i.Taxa_de_Informalidade,
-        p.Taxa_de_Part_Forca_de_Trabalho,
-        s.Taxa_de_Subocupacao
+        f.data as data,
+        f.populacao_economicamente_ativa as forca_trabalho,
+        fto.populacao_economicamente_ativa as forca_trabalho_ocupada,
+        ftd.populacao_economicamente_ativa as forca_trabalho_desocupada,
+        fo.populacao_economicamente_ativa as fora_forca_trabalho,
+        t.populacao_economicamente_ativa as forca_trabalho_total,
+        pp.populacao as população_total,
+        d.taxa_de_desalentados,
+        de.taxa_de_desocupacao,
+        des.nivel_de_desocupacao,
+        i.taxa_de_informalidade,
+        p.taxa_de_part_forca_de_trabalho,
+        s.taxa_de_subocupacao
 
     from stg_ibge__populacao_economicamente_ativa_f f
 
-    left join stg_ibge__populacao_economicamente_ativa_fto fto on f.Data = fto.Data
-    left join stg_ibge__populacao_economicamente_ativa_ftd ftd on f.Data = ftd.Data
-    left join stg_ibge__populacao_economicamente_ativa_fo fo on f.Data = fo.Data
-    left join stg_ibge__populacao_economicamente_ativa_t t on f.Data = t.Data
-    left join stg_ibge__populacao_mensal pp on f.Data = pp.Data
+    left join stg_ibge__populacao_economicamente_ativa_fto fto on f.data = fto.data
+    left join stg_ibge__populacao_economicamente_ativa_ftd ftd on f.data = ftd.data
+    left join stg_ibge__populacao_economicamente_ativa_fo fo on f.data = fo.data
+    left join stg_ibge__populacao_economicamente_ativa_t t on f.data = t.data
+    left join stg_ibge__populacao_mensal pp on f.data = pp.data
     
-    left join stg_ibge__taxa_de_desalentados d on f.Data = d.Data
-    left join stg_ibge__taxa_de_desocupacao de on f.Data = de.Data
-    left join stg_ibge__nivel_de_desocupacao des on f.Data = des.Data
-    left join stg_ibge__taxa_de_informalidade i on f.Data = i.Data
-    left join stg_ibge__taxa_de_part_forca_de_trabalho p on f.Data = p.Data
-    left join stg_ibge__taxa_de_subocupacao s on f.Data = s.Data
+    left join stg_ibge__taxa_de_desalentados d on f.data = d.data
+    left join stg_ibge__taxa_de_desocupacao de on f.data = de.data
+    left join stg_ibge__nivel_de_desocupacao des on f.data = des.data
+    left join stg_ibge__taxa_de_informalidade i on f.data = i.data
+    left join stg_ibge__taxa_de_part_forca_de_trabalho p on f.data = p.data
+    left join stg_ibge__taxa_de_subocupacao s on f.data = s.data
 )
 
 -- retorno dos dados

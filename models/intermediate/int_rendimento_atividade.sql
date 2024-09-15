@@ -8,20 +8,20 @@ with stg_ibge__rendimento_mensal_atividade as (
 
 rendimento_atividade as (
     SELECT 
-        Data,
-        SUM(CASE WHEN Trabalho_Principal = 'Agricultura, pecuária, produção florestal, pesca e aquicultura' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Agricultura',
-        SUM(CASE WHEN Trabalho_Principal = 'Indústria geral' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Indústria',
-        SUM(CASE WHEN Trabalho_Principal = 'Construção' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Construção',
-        SUM(CASE WHEN Trabalho_Principal = 'Comércio, reparação de veículos automotores e motocicletas' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Comércio',
-        SUM(CASE WHEN Trabalho_Principal = 'Transporte, armazenagem e correio' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Transporte',
-        SUM(CASE WHEN Trabalho_Principal = 'Alojamento e alimentação' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Alojamento',
-        SUM(CASE WHEN Trabalho_Principal = 'Informação, comunicação e atividades financeiras, imobiliárias, profissionais e administrativas' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Informação, Comunic., Financ., Adm.',
-        SUM(CASE WHEN Trabalho_Principal = 'Administração pública, defesa, seguridade social, educação, saúde humana e serviços sociais' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Administração Pública, Saúde, Educação',
-        SUM(CASE WHEN Trabalho_Principal = 'Outros serviços' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Outros Serviços',
-        SUM(CASE WHEN Trabalho_Principal = 'Serviços domésticos' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Serviços Domésticos',
-        SUM(CASE WHEN Trabalho_Principal = 'Total' THEN Rendimento_Mensal_Atividade ELSE 0 END) AS 'Total Atividade'
+        data,
+        SUM(CASE WHEN trabalho_principal = 'Agricultura, pecuária, produção florestal, pesca e aquicultura' THEN rendimento_mensal_atividade ELSE 0 END) AS 'agricultura',
+        SUM(CASE WHEN trabalho_principal = 'Indústria geral' THEN rendimento_mensal_atividade ELSE 0 END) AS 'industria',
+        SUM(CASE WHEN trabalho_principal = 'Construção' THEN rendimento_mensal_atividade ELSE 0 END) AS 'construcao',
+        SUM(CASE WHEN trabalho_principal = 'Comércio, reparação de veículos automotores e motocicletas' THEN rendimento_mensal_atividade ELSE 0 END) AS 'comercio',
+        SUM(CASE WHEN trabalho_principal = 'Transporte, armazenagem e correio' THEN rendimento_mensal_atividade ELSE 0 END) AS 'transporte',
+        SUM(CASE WHEN trabalho_principal = 'Alojamento e alimentação' THEN rendimento_mensal_atividade ELSE 0 END) AS 'alojamento',
+        SUM(CASE WHEN trabalho_principal = 'Informação, comunicação e atividades financeiras, imobiliárias, profissionais e administrativas' THEN rendimento_mensal_atividade ELSE 0 END) AS 'informacao,_comunic.,_financ.,_adm.',
+        SUM(CASE WHEN trabalho_principal = 'Administração pública, defesa, seguridade social, educação, saúde humana e serviços sociais' THEN rendimento_mensal_atividade ELSE 0 END) AS 'administracao_publica,_saude,_educacao',
+        SUM(CASE WHEN trabalho_principal = 'Outros serviços' THEN rendimento_mensal_atividade ELSE 0 END) AS 'outros_servicos',
+        SUM(CASE WHEN trabalho_principal = 'Serviços domésticos' THEN rendimento_mensal_atividade ELSE 0 END) AS 'servicos_domesticos',
+        SUM(CASE WHEN trabalho_principal = 'Total' THEN rendimento_mensal_atividade ELSE 0 END) AS 'total_atividade'
     FROM stg_ibge__rendimento_mensal_atividade
-    GROUP BY Data
+    GROUP BY data
 )
 
 -- retorno dos dados

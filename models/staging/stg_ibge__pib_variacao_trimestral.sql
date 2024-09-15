@@ -13,13 +13,13 @@ stg_ibge__pib_variacao_trimestral AS (
         WHEN SUBSTRING(CAST([Trimestre (Código)] AS VARCHAR(6)), 5, 2) = '03' THEN CONVERT(DATE, LEFT(CAST([Trimestre (Código)] AS VARCHAR(6)), 4) + '-09-01')
         WHEN SUBSTRING(CAST([Trimestre (Código)] AS VARCHAR(6)), 5, 2) = '04' THEN CONVERT(DATE, LEFT(CAST([Trimestre (Código)] AS VARCHAR(6)), 4) + '-12-01')
         ELSE NULL
-    END AS Data,
+    END AS data,
     TRY_CAST(
         CASE 
             WHEN [Valor] = '...' THEN NULL
             ELSE [Valor]
         END AS NUMERIC(10,2)
-    ) AS PIB_Variacao_Trimestral
+    ) AS pib_variacao_trimestral
     FROM pib_variacao_trimestral)
 
 -- retorno dos dados transformados

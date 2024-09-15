@@ -9,14 +9,14 @@ stg_ibge__populacao_economicamente_ativa as (
     select
         CONVERT(DATE, 
             SUBSTRING(CAST([Trimestre Móvel (Código)] AS VARCHAR(6)), 1, 4) + '-' + 
-            SUBSTRING(CAST([Trimestre Móvel (Código)] AS VARCHAR(6)), 5, 2) + '-01') AS Data,
+            SUBSTRING(CAST([Trimestre Móvel (Código)] AS VARCHAR(6)), 5, 2) + '-01') AS data,
         TRY_CAST(
         CASE 
             WHEN [Valor] = '...' THEN NULL
             ELSE [Valor]
         END AS INT
-    ) AS Populacao_Economicamente_Ativa,
-    [Condição em relação à força de trabalho e condição de ocupação] AS Condição_Forca_Trabalho
+    ) AS populacao_economicamente_ativa,
+    [Condição em relação à força de trabalho e condição de ocupação] AS condição_forca_trabalho
     from populacao_economicamente_ativa
 )
 

@@ -9,13 +9,13 @@ stg_ibge__rendimento_trabalho_principal as (
     select
         CONVERT(DATE, 
             SUBSTRING(CAST([Trimestre Móvel (Código)] AS VARCHAR(6)), 1, 4) + '-' + 
-            SUBSTRING(CAST([Trimestre Móvel (Código)] AS VARCHAR(6)), 5, 2) + '-01') AS Data,
+            SUBSTRING(CAST([Trimestre Móvel (Código)] AS VARCHAR(6)), 5, 2) + '-01') AS data,
         TRY_CAST(
         CASE 
             WHEN [Valor] = '...' THEN NULL
             ELSE [Valor]
         END AS INT
-    ) AS Rendimento_Trabalho_Principal
+    ) AS rendimento_trabalho_principal
     from rendimento_trabalho_principal
 )
 
