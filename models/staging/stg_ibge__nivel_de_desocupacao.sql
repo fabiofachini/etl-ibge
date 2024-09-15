@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__nivel_de_desocupacao.sql
 
 with nivel_de_desocupacao as (
-    select * from {{ source('dbo', 'nivel_de_desocupacao') }}
+    select * from {{ source('ibge', 'nivel_de_desocupacao') }}
 ),
 
 -- transformação dos dados

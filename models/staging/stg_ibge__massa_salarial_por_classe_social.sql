@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__massa_salarial_por_classe_social.sql
 
 with massa_salarial_por_classe_social as (
-    select * from {{ source('dbo', 'massa_salarial_por_classe_social') }}
+    select * from {{ source('ibge', 'massa_salarial_por_classe_social') }}
 ),
 
 -- transformação dos dados

@@ -10,4 +10,4 @@ ibge:
       user: "{{ env_var('DB_USERNAME') }}"
       pass: "{{ env_var('DB_PASSWORD') }}"
       database: "{{ env_var('DB_DATABASE') }}"
-      schema: dbo
+      schema: ibge

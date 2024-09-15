@@ -1,33 +1,25 @@
 import subprocess
 import os
 import time
-
+from dotenv import load_dotenv
 
 # Função para executar scripts Python
 def executar_scripts():
     try:
+        # Carrega o arquivo .env
+        load_dotenv()
+        
         # Caminho para os arquivos
         source = os.path.join(os.getcwd())
 
         # Executa extração
-        print("Baixando CSVs da Receita Federal")
-        extract = os.path.join(source, 'extract.py')
+        print("Baixando dados do IBGE")
+        extract = os.path.join(source, 'extract_load.py')
         subprocess.run(['python3', extract])
 
-        # Executa carregamento
-        print("Importando no Banco de Dados DuckDB")
-        load = os.path.join(source, 'load.py')
-        subprocess.run(['python3', load])
-
-        # Executa transformação
+          # Executa transformação
         print("Executando DBT")
         subprocess.run(['dbt', 'run'])
-        subprocess.run(['dbt', 'test'])
-
-        # Executa transferência para nuvem
-        print("Transferindo para nuvem")
-        transfer = os.path.join(source, 'transfer.py')
-        subprocess.run(['python3', transfer])
 
     except subprocess.CalledProcessError as e:
         print(f"Erro ao executar o script: {e}")

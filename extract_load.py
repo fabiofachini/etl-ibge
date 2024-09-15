@@ -13,7 +13,6 @@ series = [
     {'url': 'https://apisidra.ibge.gov.br/values/t/6784/n1/all/v/9812/p/all/d/v9812%202', 'tabela': 'pib_anual_pc'},
     {'url': 'https://apisidra.ibge.gov.br/values/t/6022/n1/all/v/606/p/all', 'tabela': 'populacao_trimestral'},
     {'url': 'https://apisidra.ibge.gov.br/values/t/6415/n1/all/v/606/p/all', 'tabela': 'populacao_anual'},
-    {'url': 'https://apisidra.ibge.gov.br/values/t/6706/n1/all/v/8413/p/last%201/c2/6794/c58/all/d/v8413%201', 'tabela': 'piramide_etaria'},
     {'url': 'https://apisidra.ibge.gov.br/values/t/6318/n1/all/v/1641/p/all/c629/all', 'tabela': 'populacao_economicamente_ativa'},
     {'url': 'https://apisidra.ibge.gov.br/values/t/6380/n1/all/v/4098/p/all/d/v4098%201', 'tabela': 'nivel_de_desocupacao'},
     {'url': 'https://apisidra.ibge.gov.br/values/t/6381/n1/all/v/4099/p/all/d/v4099%201', 'tabela': 'taxa_de_desocupacao'},
@@ -27,7 +26,6 @@ series = [
     {'url': 'https://apisidra.ibge.gov.br/values/t/6388/n1/all/v/5934/p/all', 'tabela': 'rendimento_trabalho_principal'},
     {'url': 'https://apisidra.ibge.gov.br/values/t/6387/n1/all/v/5935/p/all', 'tabela': 'rendimento_todos_os_trabalhos'},
     {'url': 'https://apisidra.ibge.gov.br/values/t/7453/n1/all/v/10806/p/all/d/v10806%203', 'tabela': 'indice_de_gini'},
-    {'url': 'https://apisidra.ibge.gov.br/values/t/7438/n1/all/v/10769/p/last%201/c1019/allxt', 'tabela': 'limites_classe_social'},
     {'url': 'https://apisidra.ibge.gov.br/values/t/7521/n1/all/v/606/p/all/c1019/49244,49245,49247,49248,49249,49250,49251,49252,49253,49254,49256,49257,49258', 'tabela': 'populacao_classe_social'},
     {'url': 'https://apisidra.ibge.gov.br/values/t/7527/n1/all/v/10826/p/all/c1019/49244,49245,49247,49248,49249,49250,49251,49252,49253,49254,49256,49257,49258/d/v10826%201', 'tabela': 'massa_salarial_por_classe_social'},
     {'url': 'https://apisidra.ibge.gov.br/values/t/7531/n1/all/v/10824/p/all/c1019/49244,49245,49247,49248,49249,49250,49251,49252,49253,49254,49256,49257,49258', 'tabela': 'rendimento_classe_social'},
@@ -79,7 +77,7 @@ for serie in series:
             df = df.reset_index(drop=True)
 
             # Inserir dados no banco de dados
-            df.to_sql(serie['tabela'], engine, if_exists='replace', index=False, schema='dbo')
+            df.to_sql(serie['tabela'], engine, if_exists='replace', index=False, schema='ibge')
             print(f"Dados da série {serie['tabela']} salvos com sucesso no banco de dados.")
                 
             sucesso = True

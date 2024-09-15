@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__nivel_de_instrucao.sql
 
 with nivel_de_instrucao as (
-    select * from {{ source('dbo', 'nivel_de_instrucao') }}
+    select * from {{ source('ibge', 'nivel_de_instrucao') }}
 ),
 
 -- transformação dos dados

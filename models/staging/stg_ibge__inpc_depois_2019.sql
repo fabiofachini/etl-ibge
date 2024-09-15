@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__inpc_depois_2019.sql
 
 with inpc_depois_2019 as (
-    select * from {{ source('dbo', 'inpc_depois_2019') }}
+    select * from {{ source('ibge', 'inpc_depois_2019') }}
 ),
 
 -- transformação dos dados

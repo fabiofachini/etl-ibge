@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__rendimento_classe_social.sql
 
 with rendimento_classe_social as (
-    select * from {{ source('dbo', 'rendimento_classe_social') }}
+    select * from {{ source('ibge', 'rendimento_classe_social') }}
 ),
 
 -- transformação dos dados

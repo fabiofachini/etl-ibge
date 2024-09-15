@@ -1,7 +1,7 @@
 -- models/staging/stg_ibge__populacao_mensal.sql
 
 with populacao_trimestral as (
-    select * from {{ source('dbo', 'populacao_trimestral') }}
+    select * from {{ source('ibge', 'populacao_trimestral') }}
 ),
 
 -- transformação dos dados
