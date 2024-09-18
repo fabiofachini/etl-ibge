@@ -32,7 +32,7 @@ combined_data_with_gini as (
         i.indice_gini
     from combined_data c
     left join stg_ibge__indice_de_gini i
-    on c.Data = i.Data
+    on c.Data = i.Data AND c.fonte = 'Renda'
 )
 
 -- Retorno dos dados combinados com índice de Gini

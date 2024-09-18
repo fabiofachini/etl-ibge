@@ -1,26 +1,26 @@
 with stg_ibge__populacao_economicamente_ativa_f as (
     select * from {{ ref('stg_ibge__populacao_economicamente_ativa') }}
-    where condição_forca_trabalho = 'forca de trabalho'
+    where condição_forca_trabalho = 'Força de trabalho'
 ),
 
 stg_ibge__populacao_economicamente_ativa_fto as (
     select * from {{ ref('stg_ibge__populacao_economicamente_ativa') }}
-    where condição_forca_trabalho = 'forca de trabalho - ocupada'
+    where condição_forca_trabalho = 'Força de trabalho - ocupada'
 ),
 
 stg_ibge__populacao_economicamente_ativa_ftd as (
     select * from {{ ref('stg_ibge__populacao_economicamente_ativa') }}
-    where condição_forca_trabalho = 'forca de trabalho - desocupada'
+    where condição_forca_trabalho = 'Força de trabalho - desocupada'
 ),
 
 stg_ibge__populacao_economicamente_ativa_fo as (
     select * from {{ ref('stg_ibge__populacao_economicamente_ativa') }}
-    where condição_forca_trabalho = 'fora da forca de trabalho'
+    where condição_forca_trabalho = 'Fora da força de trabalho'
 ),
 
 stg_ibge__populacao_economicamente_ativa_t as (
     select * from {{ ref('stg_ibge__populacao_economicamente_ativa') }}
-    where condição_forca_trabalho = 'total'
+    where condição_forca_trabalho = 'Total'
 ),
 
 stg_ibge__populacao_mensal as (
@@ -52,7 +52,7 @@ stg_ibge__taxa_de_subocupacao as (
 ),
 
 -- transformação dos dados
-int_populacao_trabalho_joined as (
+populacao_trabalho_joined as (
     select 
         f.data as data,
         f.populacao_economicamente_ativa as forca_trabalho,
@@ -85,4 +85,4 @@ int_populacao_trabalho_joined as (
 )
 
 -- retorno dos dados
-select * from int_populacao_trabalho_joined;
+select * from populacao_trabalho_joined;

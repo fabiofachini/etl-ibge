@@ -15,8 +15,8 @@ rendimento_atividade as (
         SUM(CASE WHEN trabalho_principal = 'Comércio, reparação de veículos automotores e motocicletas' THEN rendimento_mensal_atividade ELSE 0 END) AS 'comercio',
         SUM(CASE WHEN trabalho_principal = 'Transporte, armazenagem e correio' THEN rendimento_mensal_atividade ELSE 0 END) AS 'transporte',
         SUM(CASE WHEN trabalho_principal = 'Alojamento e alimentação' THEN rendimento_mensal_atividade ELSE 0 END) AS 'alojamento',
-        SUM(CASE WHEN trabalho_principal = 'Informação, comunicação e atividades financeiras, imobiliárias, profissionais e administrativas' THEN rendimento_mensal_atividade ELSE 0 END) AS 'informacao,_comunic.,_financ.,_adm.',
-        SUM(CASE WHEN trabalho_principal = 'Administração pública, defesa, seguridade social, educação, saúde humana e serviços sociais' THEN rendimento_mensal_atividade ELSE 0 END) AS 'administracao_publica,_saude,_educacao',
+        SUM(CASE WHEN trabalho_principal = 'Informação, comunicação e atividades financeiras, imobiliárias, profissionais e administrativas' THEN rendimento_mensal_atividade ELSE 0 END) AS 'informacao_comunic_financ_adm',
+        SUM(CASE WHEN trabalho_principal = 'Administração pública, defesa, seguridade social, educação, saúde humana e serviços sociais' THEN rendimento_mensal_atividade ELSE 0 END) AS 'administracao_publica_saude_educacao',
         SUM(CASE WHEN trabalho_principal = 'Outros serviços' THEN rendimento_mensal_atividade ELSE 0 END) AS 'outros_servicos',
         SUM(CASE WHEN trabalho_principal = 'Serviços domésticos' THEN rendimento_mensal_atividade ELSE 0 END) AS 'servicos_domesticos',
         SUM(CASE WHEN trabalho_principal = 'Total' THEN rendimento_mensal_atividade ELSE 0 END) AS 'total_atividade'
